@@ -2,14 +2,20 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 // import BaiTaplayout from './components/BaiTapLayout/BaiTaplayout';
-import DataBinding from './components/DataBinding/DataBinding';
+import DataBinding from './DataBinding/DataBinding';
+import EventBinding from './EventBinding/EventBinding';
+import HandleState from './HandleState/HandleState';
+import SelectCar from './HandleState/SelectCar';
 
 
 function App() {
   return (
     <div className="App">
       {/* <BaiTaplayout /> */}
-      <DataBinding />
+      {/* <DataBinding /> */}
+      {/* <EventBinding /> */}
+      {/* <HandleState /> */}
+      <SelectCar />
     </div>
   );
 }
