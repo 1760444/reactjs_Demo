@@ -80,3 +80,12 @@ export default class SelectCar extends Component {
     return this.renderContent();
   }
 }
+
+
+//  Cuối buổi quay về master
+// git add -A
+// git commit -m  '...'
+// Xong rồi thì tạo nhánh mới
+// git checkout -b newBranch  => git push -u origin new branch
+// quay lại nhánh master git checkout master
+// cuối cùng git push

@@ -6,6 +6,10 @@ import DataBinding from './DataBinding/DataBinding';
 import EventBinding from './EventBinding/EventBinding';
 import HandleState from './HandleState/HandleState';
 import SelectCar from './HandleState/SelectCar';
+import RenderWithMap from './RenderWithMap/RenderWithMap';
+import EXRenderMap from './RenderWithMap/EXRenderMap';
+import DemoProps from './Props/DemoProps';
+import BT2ProductList from './Props/BT2ProductList/BT2ProductList';
 
 
 function App() {
@@ -15,7 +19,12 @@ function App() {
       {/* <DataBinding /> */}
       {/* <EventBinding /> */}
       {/* <HandleState /> */}
-      <SelectCar />
+      {/* <SelectCar /> */}
+      {/* <RenderWithMap /> */}
+      {/* <EXRenderMap /> */}
+      {/* <DemoProps /> */}
+      <BT2ProductList></BT2ProductList>
+      
     </div>
   );
 }
