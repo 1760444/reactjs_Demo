@@ -9,7 +9,6 @@ export default class SP extends Component {
           <img
             className="card-img-top"
             src={sanpham.hinhAnh}
-            alt
             style={{ width: "100%", height: "350px" }}
           />
           <div className="card-body">

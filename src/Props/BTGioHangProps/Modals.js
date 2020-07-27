@@ -2,11 +2,11 @@ import React, { Component } from "react";
 
 export default class Modals extends Component {
   renderGioHang = () => {
-    let { listCartItem } = this.props;
+    let { listCartItem, remove, tanggiamsoluong } = this.props;
 
-    return listCartItem.map((cartItem) => {
+    return listCartItem.map((cartItem, index) => {
       return (
-        <tr>
+        <tr key={index}> 
           <td>{cartItem.maSP}</td>
           <td>
             <img
@@ -19,14 +19,48 @@ export default class Modals extends Component {
             <span>
               <strong>{cartItem.soLuong}&nbsp;&nbsp;</strong>
             </span>
-            <button className="btn btn-info">+</button>
-            <button className="btn btn-info">-</button>
+            <button
+              className="btn btn-info"
+              onClick={() => {
+                tanggiamsoluong(cartItem.maSP, true);
+              }}
+            >
+              +
+            </button>
+            <button
+              className="btn btn-info"
+              onClick={() => {
+                tanggiamsoluong(cartItem.maSP, false);
+              }}
+            >
+              -
+            </button>
           </td>
-          <td>{cartItem.gia} <strong>$</strong></td>
-          <td>{cartItem.soLuong * cartItem.gia} <strong>$</strong></td>
+          <td>
+            {cartItem.gia} <strong>$</strong>
+          </td>
+          <td>
+            {cartItem.soLuong * cartItem.gia} <strong>$</strong>
+          </td>
+          <td>
+            <button
+              className="btn btn-danger"
+              onClick={() => {
+                remove(cartItem.maSP);
+              }}
+            >
+              Remove
+            </button>
+          </td>
         </tr>
       );
     });
+  };
+
+  totalMoney = () => {
+    return this.props.listCartItem.reduce((sum, spGioHang, index) => {
+      return (sum += spGioHang.soLuong * spGioHang.gia);
+    }, 0);
   };
 
   render() {
@@ -66,6 +100,13 @@ export default class Modals extends Component {
                     </tr>
                   </thead>
                   <tbody>{this.renderGioHang()}</tbody>
+                  <tfoot>
+                    <tr>
+                      <td colSpan="3"></td>
+                      <td>Tổng Tiền</td>
+                      <td>{this.totalMoney().toLocaleString()}</td>
+                    </tr>
+                  </tfoot>
                 </table>
               </div>
             </div>

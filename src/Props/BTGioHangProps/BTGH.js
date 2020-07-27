@@ -76,11 +76,43 @@ export default class BTGH extends Component {
       });
   };
 
+  removeGioHang = (maSP) =>{
+    let gioHangCapNhat = [...this.state.cartList];
+    let index = gioHangCapNhat.findIndex(spGioHang=> spGioHang.maSP === maSP);
+    if(index !== -1){
+      gioHangCapNhat.splice(index,1);
+    }
+
+    this.setState({
+      cartList: gioHangCapNhat,
+    });
+  }
+
+  tangGiamSoLuong = (maSP,tanggiam) => {
+    let gioHangCapNhat = [...this.state.cartList];
+    let index = gioHangCapNhat.findIndex(spGioHang => spGioHang.maSP === maSP);
+    if(index !== -1){
+      if(tanggiam){ 
+        gioHangCapNhat[index].soLuong +=1;
+      }
+      else{
+        let soluong = gioHangCapNhat[index].soLuong;
+        if(soluong > 0){
+          gioHangCapNhat[index].soLuong -=1;
+        }
+      }
+    }
+
+    this.setState({
+      cartList: gioHangCapNhat,
+    });
+  }
+
   render() {
     return (
       <div>
-        <Modals listCartItem={this.state.cartList} />
-        <DSSP listSP={this.arrProduct} add={this.addGioHang} />
+        <Modals listCartItem={this.state.cartList} remove={this.removeGioHang} tanggiamsoluong={this.tangGiamSoLuong}/>
+        <DSSP listSP={this.arrProduct}  add={this.addGioHang} />
       </div>
     );
   }
